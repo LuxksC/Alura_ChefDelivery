@@ -1,5 +1,5 @@
 
-![Descricao da sua imagem](https://raw.githubusercontent.com/andreocunha/upload_files_test/main/exemplo-thumb.png)
+![Mobile-iOS_ Testes de unidade](https://github.com/AndriuCoelho/ios-chef-delivery-unit-test/assets/7536739/e6eb4c22-f5da-4631-9e58-047a196e4a50)
 
 # ChefDelivery
 
