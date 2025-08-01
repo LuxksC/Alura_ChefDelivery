@@ -35,6 +35,8 @@
 		48A230D92A2C097400431A41 /* ProductDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A230D82A2C097400431A41 /* ProductDetailHeaderView.swift */; };
 		48A230DB2A2C098000431A41 /* ProductDetailQuantityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A230DA2A2C098000431A41 /* ProductDetailQuantityView.swift */; };
 		48A230DE2A2C104400431A41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A230DD2A2C104400431A41 /* HomeView.swift */; };
+		E68615EE2E3AFD4D00BE1FE9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68615ED2E3AFD4D00BE1FE9 /* StringExtension.swift */; };
+		E68615F02E3AFE7900BE1FE9 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68615EF2E3AFE7900BE1FE9 /* ArrayExtension.swift */; };
 		F1594F932E39019400F93BF7 /* SearchStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1594F922E39019400F93BF7 /* SearchStoreViewModel.swift */; };
 		F1594F9A2E39039900F93BF7 /* SearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1594F992E39039900F93BF7 /* SearchServiceProtocol.swift */; };
 		F1594F9C2E39042800F93BF7 /* HomeServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1594F9B2E39042800F93BF7 /* HomeServiceProtocol.swift */; };
@@ -82,6 +84,8 @@
 		48A230D82A2C097400431A41 /* ProductDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailHeaderView.swift; sourceTree = "<group>"; };
 		48A230DA2A2C098000431A41 /* ProductDetailQuantityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailQuantityView.swift; sourceTree = "<group>"; };
 		48A230DD2A2C104400431A41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E68615ED2E3AFD4D00BE1FE9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E68615EF2E3AFE7900BE1FE9 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		F1594F922E39019400F93BF7 /* SearchStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreViewModel.swift; sourceTree = "<group>"; };
 		F1594F992E39039900F93BF7 /* SearchServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceProtocol.swift; sourceTree = "<group>"; };
 		F1594F9B2E39042800F93BF7 /* HomeServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceProtocol.swift; sourceTree = "<group>"; };
@@ -242,6 +246,8 @@
 			isa = PBXGroup;
 			children = (
 				48A230CA2A2C011A00431A41 /* Double+.swift */,
+				E68615ED2E3AFD4D00BE1FE9 /* StringExtension.swift */,
+				E68615EF2E3AFE7900BE1FE9 /* ArrayExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -394,7 +400,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					1828E78A2A151C6700B8A3C6 = {
 						CreatedOnToolsVersion = 14.3;
@@ -455,6 +461,7 @@
 			files = (
 				F1594F932E39019400F93BF7 /* SearchStoreViewModel.swift in Sources */,
 				48A230D92A2C097400431A41 /* ProductDetailHeaderView.swift in Sources */,
+				E68615EE2E3AFD4D00BE1FE9 /* StringExtension.swift in Sources */,
 				1828E7B32A15589100B8A3C6 /* Order.swift in Sources */,
 				48A230D02A2C023E00431A41 /* ProductDetailView.swift in Sources */,
 				48A230C42A2BFC1B00431A41 /* Product.swift in Sources */,
@@ -479,6 +486,7 @@
 				184E5BF52A4F689E0035CED1 /* HomeService.swift in Sources */,
 				48A230D52A2C085700431A41 /* StoreDetailProductsView.swift in Sources */,
 				180B336F2A166A3200C1AFBC /* CarouselTabView.swift in Sources */,
+				E68615F02E3AFE7900BE1FE9 /* ArrayExtension.swift in Sources */,
 				48A230D72A2C086000431A41 /* StoreDetailProductItemView.swift in Sources */,
 				03F6F1F12BE51ACC00CA5703 /* SearchStoreView.swift in Sources */,
 				48A230D32A2C084200431A41 /* StoreDetailHeaderView.swift in Sources */,
@@ -508,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -569,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

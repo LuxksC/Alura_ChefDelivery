@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum SearchError: Error {
+    case noResultsFound
+}
+
 class SearchStoreViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var stores: [Store] = []
@@ -25,49 +29,33 @@ class SearchStoreViewModel: ObservableObject {
     
     // MARK: - Public Methods
     
-//    func fetchData() {
-//        Task {
-//            do {
-//                let result = try await searchService.fetchData()
-//                switch result {
-//                case .success(let stores):
-//                    self.stores = stores
-//                case .failure(let error):
-//                    print(error.localizedDescription)
-//                }
-//            } catch {
-//                print(error.localizedDescription)
-//            }
-//        }
-//    }
-    
     func fetchData() {
-        stores = Store.sample
+        Task {
+            do {
+                let result = try await searchService.fetchData()
+                switch result {
+                case .success(let stores):
+                    self.stores = stores
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
-    func filteredStores() -> [Store] {
+    func filteredStores() throws -> [Store] {
         if searchText.isEmpty {
             return stores
-        } else {
-            /// Array com as palavras digitadas na busca
-            let searchTerms = searchText.lowercased().split(separator: " ")
-            
-            let filteredStores = stores.filter { store in
-                
-                ///Retorna true se todas as palavras digitadas na busca estiverem contidas no nome da Store
-                let nameContainsSearchTerm = searchTerms.allSatisfy { term in
-                    store.name.lowercased().contains(term)
-                }
-                
-                /// Retorna true se todas as palavras digitadas na busca estiverem contidas nas specialties da Store
-                let specialtiesContainsSearchTerm = searchTerms.allSatisfy { term in
-                    store.specialties?.contains { $0.lowercased().contains(term) } ?? false
-                }
-                
-                return nameContainsSearchTerm || specialtiesContainsSearchTerm
-            }
-            
-            return filteredStores
         }
+        
+        let filteredStores: [Store] = try stores.filter { $0.matches(query: searchText) }
+        
+        if filteredStores.isEmpty {
+            throw SearchError.noResultsFound
+        }
+        
+        return filteredStores
     }
 }

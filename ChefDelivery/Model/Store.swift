@@ -9,6 +9,10 @@ import Foundation
 import SwiftAndTipsMacros
 import DataGenerator
 
+protocol Searchable {
+    func matches(query: String) -> Bool
+}
+
 @SampleBuilder(numberOfItems: 5, dataGeneratorType: .random)
 struct Store: Identifiable, Codable {
     let id: Int
@@ -37,5 +41,19 @@ struct Store: Identifiable, Codable {
         case id, name, location, stars, products, specialties
         case logoImage = "logo_image"
         case headerImage = "header_image"
+    }
+}
+
+extension Store: Searchable {
+    func matches(query: String) -> Bool {
+        var parameters: [Searchable]
+        
+        if let specialties, !specialties.isEmpty {
+            parameters = [name, specialties]
+        } else {
+            parameters = [name]
+        }
+        
+        return parameters.contains(where: { $0.matches(query: query.lowercased()) })
     }
 }

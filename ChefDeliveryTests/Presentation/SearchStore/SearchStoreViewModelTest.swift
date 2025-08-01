@@ -51,9 +51,15 @@ final class SearchStoreViewModelTest: XCTestCase {
         sut.searchText = "Se"
         
         // Than
-        let filteredStores: [Store] = sut.filteredStores()
-        XCTAssertEqual(1, filteredStores.count)
-        XCTAssertEqual("Second Store", filteredStores.first?.name)
+        var filteredStores: [Store] = []
+        
+        do {
+            filteredStores = try sut.filteredStores()
+            XCTAssertEqual(1, filteredStores.count)
+            XCTAssertEqual("Second Store", filteredStores.first?.name)
+        } catch {
+            XCTFail("Failure in testFilteredStores")
+        }
     }
     
     func testFileteredStoresWithSpecialCharacters() {
@@ -61,8 +67,14 @@ final class SearchStoreViewModelTest: XCTestCase {
         sut.searchText = "#$%68K9)"
         
         // Than
-        let filteredStores: [Store] = sut.filteredStores()
-        XCTAssertEqual(0, filteredStores.count)
+        var filteredStores: [Store] = []
+        
+        do {
+            filteredStores = try sut.filteredStores()
+            XCTFail("Failure in testFileteredStoresWithSpecialCharacters")
+        } catch {
+            XCTAssertEqual(0, filteredStores.count)
+        }
     }
     
     func testFilteredStoresBySpeialty() {
@@ -70,8 +82,20 @@ final class SearchStoreViewModelTest: XCTestCase {
         sut.searchText = "Pizza"
         
         // Than
-        let filteredStores: [Store] = sut.filteredStores()
-        XCTAssertEqual(1, filteredStores.count)
-        XCTAssertEqual("First Store", filteredStores.first?.name)
+        var filteredStores: [Store] = []
+        
+        do {
+            filteredStores = try sut.filteredStores()
+            XCTAssertEqual(1, filteredStores.count)
+            XCTAssertEqual("First Store", filteredStores.first?.name)
+        } catch {
+            XCTFail("Failure in testFilteredStoresBySpeialty")
+        }
+    }
+    
+    func testFilteredStoresException() {
+        sut.searchText = "zzAACF"
+        
+        XCTAssertThrowsError(try sut.filteredStores())
     }
 }
