@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct SearchService: SearchServiceProtocol {
     
     func fetchData() async throws -> Result<[Store], RequestError> {

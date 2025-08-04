@@ -37,6 +37,7 @@
 		48A230DE2A2C104400431A41 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A230DD2A2C104400431A41 /* HomeView.swift */; };
 		E68615EE2E3AFD4D00BE1FE9 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68615ED2E3AFD4D00BE1FE9 /* StringExtension.swift */; };
 		E68615F02E3AFE7900BE1FE9 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68615EF2E3AFE7900BE1FE9 /* ArrayExtension.swift */; };
+		E69717A62E41413900430C44 /* SearchServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69717A52E41413900430C44 /* SearchServiceStub.swift */; };
 		F1594F932E39019400F93BF7 /* SearchStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1594F922E39019400F93BF7 /* SearchStoreViewModel.swift */; };
 		F1594F9A2E39039900F93BF7 /* SearchServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1594F992E39039900F93BF7 /* SearchServiceProtocol.swift */; };
 		F1594F9C2E39042800F93BF7 /* HomeServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1594F9B2E39042800F93BF7 /* HomeServiceProtocol.swift */; };
@@ -86,6 +87,7 @@
 		48A230DD2A2C104400431A41 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E68615ED2E3AFD4D00BE1FE9 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		E68615EF2E3AFE7900BE1FE9 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
+		E69717A52E41413900430C44 /* SearchServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceStub.swift; sourceTree = "<group>"; };
 		F1594F922E39019400F93BF7 /* SearchStoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreViewModel.swift; sourceTree = "<group>"; };
 		F1594F992E39039900F93BF7 /* SearchServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchServiceProtocol.swift; sourceTree = "<group>"; };
 		F1594F9B2E39042800F93BF7 /* HomeServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceProtocol.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 			children = (
 				03DEBA002BD5BC8F00D8A486 /* SearchService.swift */,
 				F1594F992E39039900F93BF7 /* SearchServiceProtocol.swift */,
+				E69717A52E41413900430C44 /* SearchServiceStub.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				1828E78F2A151C6700B8A3C6 /* ChefDeliveryApp.swift in Sources */,
 				1828E7A32A15264A00B8A3C6 /* NavigationBar.swift in Sources */,
 				F1594F9C2E39042800F93BF7 /* HomeServiceProtocol.swift in Sources */,
+				E69717A62E41413900430C44 /* SearchServiceStub.swift in Sources */,
 				48A230C22A2BFC1200431A41 /* Store.swift in Sources */,
 				184E5BF52A4F689E0035CED1 /* HomeService.swift in Sources */,
 				48A230D52A2C085700431A41 /* StoreDetailProductsView.swift in Sources */,

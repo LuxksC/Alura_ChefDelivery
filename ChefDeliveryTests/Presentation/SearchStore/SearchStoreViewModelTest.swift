@@ -14,7 +14,8 @@ final class SearchStoreViewModelTest: XCTestCase {
     // MARK: - Setup
 
     override func setUpWithError() throws {
-        sut = SearchStoreViewModel()
+        var searchServiceStub = SearchServiceStub()
+        sut = SearchStoreViewModel(searService: searchServiceStub)
         
         sut.stores = [
             Store(
@@ -98,4 +99,49 @@ final class SearchStoreViewModelTest: XCTestCase {
         
         XCTAssertThrowsError(try sut.filteredStores())
     }
+    
+    func testFetchDataWithSuccess() {
+        let stub = SearchServiceStub()
+        sut = SearchStoreViewModel(searService: stub)
+        
+        let expectation = XCTestExpectation(description: "Fetch stores list")
+        
+        sut
+            .$stores // observa a variável stores
+            .dropFirst() // ignora o primeiro valor atribuído a variável, no caso é o valor de inicialização dela
+            .sink { stores in // executa uma ação toda vez que o valor da variável é alterado
+                XCTAssertEqual(2, stores.count)
+                XCTAssertEqual("Monstro Burger", stores[0].name)
+                XCTAssertEqual("Food Court", stores[1].name)
+                
+                expectation.fulfill()
+            }
+            .store(in: &sut.cancellables) // cancela a observação de alterações da variável
+        
+        sut.fetchData()
+        
+        wait(for: [expectation], timeout: 1) // espera um segundo para executar o teste
+    }
+    
+    func testFetchDataWithFailure() {
+        let stub = SearchServiceStubFailure()
+        sut = SearchStoreViewModel(searService: stub)
+        
+        let expectation = XCTestExpectation(description: "Show error alert")
+        
+        sut
+            .$showAlert
+            .dropFirst()
+            .sink { showAlert in
+                XCTAssertTrue(showAlert)
+                expectation.fulfill()
+            }
+            .store(in: &sut.cancellables)
+        
+        sut.fetchData()
+        
+        wait(for: [expectation], timeout: 1)
+    }
 }
+
+

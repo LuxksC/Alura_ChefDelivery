@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 enum SearchError: Error {
     case noResultsFound
@@ -14,9 +15,11 @@ enum SearchError: Error {
 class SearchStoreViewModel: ObservableObject {
     @Published var searchText: String = ""
     @Published var stores: [Store] = []
-    
+    @Published var showAlert: Bool = false
     
     private let searchService: SearchServiceProtocol
+    
+    var cancellables = Set<AnyCancellable>()
     
     // MARK: - Init
     
@@ -24,7 +27,6 @@ class SearchStoreViewModel: ObservableObject {
         searService: SearchServiceProtocol = SearchService()
     ) {
         self.searchService = searService
-        fetchData()
     }
     
     // MARK: - Public Methods
@@ -37,7 +39,7 @@ class SearchStoreViewModel: ObservableObject {
                 case .success(let stores):
                     self.stores = stores
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    self.showAlert = true
                 }
             } catch {
                 print(error.localizedDescription)
@@ -50,7 +52,7 @@ class SearchStoreViewModel: ObservableObject {
             return stores
         }
         
-        let filteredStores: [Store] = try stores.filter { $0.matches(query: searchText) }
+        let filteredStores: [Store] = stores.filter { $0.matches(query: searchText) }
         
         if filteredStores.isEmpty {
             throw SearchError.noResultsFound

@@ -22,6 +22,12 @@ struct SearchStoreView: View {
                 Spacer()
             }
             .padding(.horizontal)
+            .alert(Text("Desculpe!"), isPresented: $vm.showAlert) {} message: {
+                Text("Ocorreu um erro em nosso servidor, nosso time está trabalhando para solucionar este problema.")
+            }
+        }
+        .onAppear {
+            vm.fetchData()
         }
     }
     
