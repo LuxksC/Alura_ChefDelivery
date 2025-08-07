@@ -17,10 +17,18 @@ struct SearchService: SearchServiceProtocol {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        let (data, _) = try await URLSession.shared.data(for: request)
-        let storesObjects = try JSONDecoder().decode([Store].self, from: data)
-        
-        return .success(storesObjects)
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+                return .failure(.serverError(statusCode: httpResponse.statusCode))
+            }
+            
+            let stores = try JSONDecoder().decode([Store].self, from: data)
+            return .success(stores)
+        } catch {
+            return .failure(.errorRequest(error: error.localizedDescription))
+        }
     }
     
 }

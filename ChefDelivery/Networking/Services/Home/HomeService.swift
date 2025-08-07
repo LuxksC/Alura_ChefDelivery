@@ -11,6 +11,7 @@ import Alamofire
 enum RequestError: Error {
     case invalidURL
     case errorRequest(error: String)
+    case serverError(statusCode: Int)
 }
 
 struct HomeService: HomeServiceProtocol {
